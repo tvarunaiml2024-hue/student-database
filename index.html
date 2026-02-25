@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Data Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Student Data Management System</h1>
+            <p>View and manage student information</p>
+        </header>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search by name or ID...">
+            </div>
+            <div class="filter-options">
+                <select id="gradeFilter">
+                    <option value="">All Grades</option>
+                    <option value="10">Grade 10</option>
+                    <option value="11">Grade 11</option>
+                    <option value="12">Grade 12</option>
+                </select>
+                <button class="btn btn-add" onclick="toggleAddForm()">+ Add Student</button>
+            </div>
+        </div>
+
+        <div id="addFormContainer" class="add-form-container" style="display: none;">
+            <h3>Add New Student</h3>
+            <form id="addStudentForm">
+                <input type="text" id="newStudentId" placeholder="Student ID" required>
+                <input type="text" id="newStudentName" placeholder="Full Name" required>
+                <input type="email" id="newStudentEmail" placeholder="Email" required>
+                <select id="newStudentGrade" required>
+                    <option value="">Select Grade</option>
+                    <option value="10">Grade 10</option>
+                    <option value="11">Grade 11</option>
+                    <option value="12">Grade 12</option>
+                </select>
+                <input type="number" id="newStudentGPA" placeholder="GPA" step="0.01" min="0" max="4" required>
+                <button type="submit" class="btn btn-primary">Add Student</button>
+                <button type="button" class="btn btn-secondary" onclick="toggleAddForm()">Cancel</button>
+            </form>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <h4>Total Students</h4>
+                <p id="totalStudents">0</p>
+            </div>
+            <div class="stat-card">
+                <h4>Average GPA</h4>
+                <p id="averageGPA">0.00</p>
+            </div>
+            <div class="stat-card">
+                <h4>Total Grades</h4>
+                <p id="totalGrades">0</p>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="studentTable">
+                <thead>
+                    <tr>
+                        <th onclick="sortTable('id')">Student ID ▼</th>
+                        <th onclick="sortTable('name')">Name ▼</th>
+                        <th onclick="sortTable('email')">Email ▼</th>
+                        <th onclick="sortTable('grade')">Grade ▼</th>
+                        <th onclick="sortTable('gpa')">GPA ▼</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="studentTableBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
